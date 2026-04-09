@@ -1,11 +1,11 @@
 # Natural-Language SQL Analytics and Dashboard Generation Studio
 
-QueryCanvas is a compact full-stack analytics app. Users ask business questions in plain English, the backend generates a safe SQL query over a seeded analytics database, executes it, and the React frontend renders tables and charts.
+QueryCanvas is a compact full-stack analytics app. Users ask business questions in plain English, a Java Spring Boot backend generates a safe SQL query over a seeded analytics database, executes it, and the React frontend renders tables and charts.
 
 ## Highlights
 
 - React + Vite frontend with TypeScript
-- Express + TypeScript backend with SQLite execution
+- Java + Spring Boot backend with H2 SQL execution
 - Natural-language-to-SQL flow with deterministic guards and optional OpenAI refinement
 - Chart recommendations and metric summaries for quick analytics exploration
 
@@ -15,20 +15,18 @@ Install and run client and server separately:
 
 ```bash
 cd server
-npm install
-npm run dev
+mvn spring-boot:run
 
 cd ../client
 npm install
 npm run dev
 ```
 
-Optional environment variables for the server:
+Optional environment variables for the Spring Boot server:
 
 ```bash
 OPENAI_API_KEY=sk-...
 OPENAI_MODEL=gpt-4.1-mini
-PORT=8787
 ```
 
 ## Demo questions
