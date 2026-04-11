@@ -2,6 +2,7 @@ package com.querycanvas.api;
 
 import com.querycanvas.service.QueryService;
 import com.querycanvas.service.QueryService.QueryResponse;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,11 +26,13 @@ public class QueryController {
     }
 
     @GetMapping("/health")
+    @Operation(summary = "Check API health", description = "Returns a simple readiness payload for the Spring Boot service.")
     public Map<String, String> health() {
         return Map.of("status", "ok", "service", "querycanvas-server");
     }
 
     @PostMapping("/api/query")
+    @Operation(summary = "Run a natural-language analytics query", description = "Maps a business question to a curated SQL plan and returns rows, SQL, and chart metadata.")
     public QueryResponse query(@RequestBody QueryRequest request) {
         if (request == null || request.question() == null || request.question().isBlank()) {
             throw new ResponseStatusException(BAD_REQUEST, "Question is required.");
